@@ -1,34 +1,47 @@
 Bakery
 =====
 
-A PHP package mainly developed for Laravel to generate breadcrumbs using routes.
+A PHP package mainly developed for Laravel to generate breadcrumbs using routes.  
+(This is for Laravel 4.2. [For Laravel 5+](https://github.com/SUKOHI/Bakery))
 
-Installation&setting for Laravel
+Installation
 ====
 
-After installation using composer, add the followings to the array in  app/config/app.php
+Add this package name in composer.json
 
-    'providers' => array(  
-        ...Others...,  
-        'Sukohi\Bakery\BakeryServiceProvider', 
-    )
+    "require": {
+      "sukohi/bakery": "1.*"
+    }
 
-    'aliases' => array(  
+Execute composer command.
+
+    composer update
+
+Register the service provider in app.php
+
+    'providers' => [
         ...Others...,  
-        'Bakery' =>'Sukohi\Bakery\Facades\Bakery',
-    )
+        'Sukohi\Bakery\BakeryServiceProvider',
+    ]
+
+Also alias
+
+    'aliases' => [
+        ...Others...,  
+        'Bakery' => 'Sukohi\Bakery\Facades\Bakery',
+    ]
 
 Usage
 ====
 
-	$params = array(
+	$params = [
 	
 		'home' => 'Home',
 		'home.area:vancouver' => 'Vancouver',
 		'home.food:sushi,popular' => 'Popular sushi restaurants',
 		'*' => 'Samurai'
 	
-	);
+	];
 
 	foreach(Bakery::get($params) as $bakery) {
 	
