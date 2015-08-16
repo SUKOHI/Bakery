@@ -10,7 +10,7 @@ Installation
 Add this package name in composer.json
 
     "require": {
-      "sukohi/bakery": "1.*"
+      "sukohi/bakery": "2.*"
     }
 
 Execute composer command.
@@ -21,14 +21,14 @@ Register the service provider in app.php
 
     'providers' => [
         ...Others...,  
-        'Sukohi\Bakery\BakeryServiceProvider',
+        Sukohi\Bakery\BakeryServiceProvider::class,
     ]
 
 Also alias
 
     'aliases' => [
         ...Others...,  
-        'Bakery' => 'Sukohi\Bakery\Facades\Bakery',
+        'Bakery'   => Sukohi\Bakery\Facades\Bakery::class
     ]
 
 Usage
@@ -43,7 +43,7 @@ Usage
 	
 	];
 
-	foreach(Bakery::get($params) as $bakery) {
+	foreach(\Bakery::get($params) as $bakery) {
 	
 		if($bakery->isCurrent) {
 	
@@ -51,7 +51,7 @@ Usage
 	
 		} else {
 	
-			echo HTML::link($bakery->url, $bakery->title) .' &gt; ';
+			echo link_to($bakery->url, $bakery->title) .' &gt; ';
 	
 		}
 	
@@ -60,10 +60,10 @@ Usage
 About parameter pattern
 ====
 
-	1.'route' => 'title'
-	2.'route:parameter' => 'title'
-	3.'route:parameter1,parameter2' => 'title',
-	4.'*' => 'Current Page'
+1. 'route' => 'title'
+2. 'route:parameter' => 'title'
+3. 'route:parameter1,parameter2' => 'title',
+4. '*' => 'Current Page'
 
 
 License

@@ -5,7 +5,7 @@ class Bakery {
 	
 	public function get($breadcrumbs_data) {
 		
-		$bakery_data = array();
+		$bakery_data = [];
 		
 		foreach ($breadcrumbs_data as $route => $link_text) {
 			
@@ -18,7 +18,7 @@ class Bakery {
 				
 			} else {
 
-				$params = array();
+				$params = [];
 				
 				if(strpos($route, ':') !== false) {
 				
@@ -30,7 +30,7 @@ class Bakery {
 						
 					} else {
 						
-						$params = array($params);
+						$params = [$params];
 						
 					}
 					
